@@ -1,0 +1,2099 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prom Coast | South Gippsland Travel & Accommodation</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        prom: {
+                            50: '#f0fdf4',
+                            100: '#dcfce7',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            800: '#166534',
+                            900: '#14532d',
+                            deep: '#064e3b',
+                            sand: '#fef3c7',
+                            ocean: '#0284c7'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', '-apple-system', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        .hero-gradient {
+            background: linear-gradient(rgba(6, 78, 59, 0.52), rgba(2, 132, 199, 0.38)),
+            url('https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1920&q=90');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .map-pin {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .map-pin:hover {
+            transform: scale(1.15);
+            z-index: 50;
+        }
+
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-50 text-slate-800 font-sans antialiased selection:bg-prom-600 selection:text-white">
+
+    <!-- Top Bar / Notification -->
+    <div class="bg-prom-deep text-white text-xs sm:text-sm py-2 px-4 text-center font-medium">
+        <i class="fa-solid fa-compass mr-2 text-amber-400"></i>
+        Explore South Gippsland & Wilsons Promontory •
+        <a href="#planner" class="underline hover:text-amber-300 font-semibold">
+            Plan Your Stay & Book Direct
+        </a>
+    </div>
+
+    <!-- Main Navigation Header -->
+    <header id="navbar" class="sticky top-0 z-40 bg-white/95 backdrop-blur-md shadow-sm transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-3 group">
+                <div class="w-11 h-11 rounded-xl bg-prom-deep flex items-center justify-center text-white shadow-md group-hover:bg-prom-700 transition">
+                    <i class="fa-solid fa-mountain-sun text-xl text-amber-400"></i>
+                </div>
+
+                <div>
+                    <span class="text-2xl font-extrabold tracking-tight text-slate-900">
+                        PROM<span class="text-prom-600">COAST</span>
+                    </span>
+                    <p class="text-[10px] uppercase tracking-widest text-slate-500 font-semibold -mt-1">
+                        South Gippsland, Victoria
+                    </p>
+                </div>
+            </a>
+
+            <!-- Desktop Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 font-medium text-slate-700">
+                <a href="#explore" class="hover:text-prom-600 transition">Explore Region</a>
+                <a href="#map-section" class="hover:text-prom-600 transition">Interactive Map</a>
+                <a href="#attractions" class="hover:text-prom-600 transition">Things to Do</a>
+                <a href="#planner" class="hover:text-prom-600 transition">Where to Stay</a>
+                <a href="#itinerary" class="hover:text-prom-600 transition">Prom Planner</a>
+            </nav>
+
+            <!-- Action Button -->
+            <div class="hidden lg:flex items-center gap-4">
+                <a href="#planner"
+                   class="bg-prom-600 hover:bg-prom-700 text-white px-5 py-2.5 rounded-xl font-semibold shadow-md hover:shadow-lg transition flex items-center gap-2">
+                    <i class="fa-solid fa-bed"></i>
+                    Book Accommodation
+                </a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="mobile-menu-btn"
+                    aria-label="Toggle mobile menu"
+                    class="md:hidden text-slate-700 focus:outline-none p-2 rounded-lg hover:bg-slate-100">
+                <i class="fa-solid fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div id="mobile-menu"
+             class="hidden md:hidden bg-white border-b border-slate-200 px-6 py-4 space-y-3 shadow-xl">
+
+            <a href="#explore" class="block py-2 font-medium text-slate-700 hover:text-prom-600">
+                Explore Region
+            </a>
+
+            <a href="#map-section" class="block py-2 font-medium text-slate-700 hover:text-prom-600">
+                Interactive Map
+            </a>
+
+            <a href="#attractions" class="block py-2 font-medium text-slate-700 hover:text-prom-600">
+                Things to Do
+            </a>
+
+            <a href="#planner" class="block py-2 font-medium text-slate-700 hover:text-prom-600">
+                Where to Stay
+            </a>
+
+            <a href="#itinerary" class="block py-2 font-medium text-slate-700 hover:text-prom-600">
+                Prom Planner
+            </a>
+
+            <div class="pt-2">
+                <a href="#planner"
+                   class="block w-full text-center bg-prom-600 text-white py-3 rounded-xl font-semibold shadow">
+                    Book Accommodation
+                </a>
+            </div>
+        </div>
+    </header>
+
+
+    <!-- ================= HERO SECTION ================= -->
+
+    <section class="hero-gradient text-white py-24 lg:py-36 px-4 relative overflow-hidden">
+
+        <div class="max-w-5xl mx-auto text-center relative z-10">
+
+            <span class="inline-flex items-center gap-2 bg-white/20 backdrop-blur-md px-4 py-1.5 rounded-full text-sm font-medium mb-6 text-amber-300 border border-white/30">
+                <i class="fa-solid fa-star"></i>
+                Discover Victoria's Wild Southern Coastline
+            </span>
+
+            <h1 class="text-4xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 leading-tight">
+                Where the Mountains Meet the Ocean
+            </h1>
+
+            <p class="text-lg sm:text-xl text-slate-100 max-w-2xl mx-auto mb-10 font-light">
+                Your ultimate guide to Wilsons Promontory, pristine beaches, coastal walks,
+                charming country towns, and hand-picked stays across South Gippsland.
+            </p>
+
+            <!-- Quick Search Bar Widget -->
+            <div class="bg-white p-3 sm:p-4 rounded-2xl shadow-2xl max-w-4xl mx-auto text-slate-800 grid grid-cols-1 sm:grid-cols-4 gap-3 items-center">
+
+                <div class="text-left px-3 py-2 border-b sm:border-b-0 sm:border-r border-slate-200">
+                    <label class="block text-xs font-bold uppercase text-slate-400">
+                        Destination
+                    </label>
+
+                    <select id="hero-dest"
+                            class="w-full bg-transparent font-semibold text-slate-700 focus:outline-none cursor-pointer">
+
+                        <option>All South Gippsland</option>
+                        <option>Wilsons Promontory</option>
+                        <option>Foster & Fish Creek</option>
+                        <option>Yanakie & Prom Gate</option>
+                        <option>Port Welshpool & Port Albert</option>
+                    </select>
+                </div>
+
+                <div class="text-left px-3 py-2 border-b sm:border-b-0 sm:border-r border-slate-200">
+
+                    <label class="block text-xs font-bold uppercase text-slate-400">
+                        Experience Type
+                    </label>
+
+                    <select id="hero-type"
+                            class="w-full bg-transparent font-semibold text-slate-700 focus:outline-none cursor-pointer">
+
+                        <option>All Attractions & Stays</option>
+                        <option>Accommodation</option>
+                        <option>Beaches & Coast</option>
+                        <option>Bushwalks & Trails</option>
+                        <option>Food & Dining</option>
+                    </select>
+                </div>
+
+                <div class="text-left px-3 py-2">
+
+                    <label class="block text-xs font-bold uppercase text-slate-400">
+                        Dates / Season
+                    </label>
+
+                    <input type="text"
+                           value="Spring & Summer Getaway"
+                           readonly
+                           class="w-full bg-transparent font-semibold text-slate-700 focus:outline-none">
+                </div>
+
+                <div>
+
+                    <button onclick="scrollToPlanner()"
+                            class="w-full bg-prom-600 hover:bg-prom-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg transition flex items-center justify-center gap-2">
+
+                        <i class="fa-solid fa-magnifying-glass"></i>
+                        Explore Now
+                    </button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="absolute bottom-0 left-0 right-0 h-12 bg-slate-50 rounded-t-[2.5rem]"></div>
+    </section>
+
+
+    <!-- ================= REGIONS & TOWNS ================= -->
+
+    <section id="explore" class="py-16 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+
+        <div class="text-center max-w-3xl mx-auto mb-16">
+
+            <span class="text-prom-600 font-bold uppercase tracking-wider text-sm">
+                Charming Communities
+            </span>
+
+            <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 mb-4">
+                Explore South Gippsland Towns
+            </h2>
+
+            <p class="text-slate-600 text-lg">
+                From creative arts villages to the gateway of Victoria's most iconic national park,
+                find your perfect base.
+            </p>
+        </div>
+
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+            <!-- Wilsons Prom -->
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition group border border-slate-100 flex flex-col">
+
+                <div class="relative h-56 overflow-hidden">
+
+                    <img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=1000&q=90"
+                         alt="Wilsons Promontory coastline Victoria"
+                         class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                         onerror="this.src='https://placehold.co/600x400/064e3b/ffffff?text=Wilsons+Prom'">
+
+                    <span class="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full">
+                        National Park
+                    </span>
+                </div>
+
+                <div class="p-6 flex-1 flex flex-col justify-between">
+
+                    <div>
+
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">
+                            Wilsons Promontory
+                        </h3>
+
+                        <p class="text-slate-600 text-sm mb-4">
+                            Granite mountains, pristine white-sand beaches like Squeaky Beach,
+                            and abundant wildlife.
+                        </p>
+
+                    </div>
+
+                    <button onclick="filterByTown('Wilsons Promontory')"
+                            class="text-prom-600 font-semibold text-sm hover:text-prom-700 flex items-center gap-1 group-hover:translate-x-1 transition">
+
+                        View Guides & Stays
+                        <i class="fa-solid fa-arrow-right-long"></i>
+
+                    </button>
+                </div>
+            </div>
+
+
+            <!-- Fish Creek -->
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition group border border-slate-100 flex flex-col">
+
+                <div class="relative h-56 overflow-hidden">
+
+                    <img src="https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=1000&q=90"
+                         alt="Fish Creek South Gippsland landscape"
+                         class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                         onerror="this.src='https://placehold.co/600x400/16a34a/ffffff?text=Fish+Creek'">
+
+                    <span class="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full">
+                        Arts & Culture
+                    </span>
+                </div>
+
+                <div class="p-6 flex-1 flex flex-col justify-between">
+
+                    <div>
+
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">
+                            Fish Creek
+                        </h3>
+
+                        <p class="text-slate-600 text-sm mb-4">
+                            A quirky, vibrant township famous for its giant colorful fish,
+                            art galleries, and cafes.
+                        </p>
+
+                    </div>
+
+                    <button onclick="filterByTown('Fish Creek')"
+                            class="text-prom-600 font-semibold text-sm hover:text-prom-700 flex items-center gap-1 group-hover:translate-x-1 transition">
+
+                        View Guides & Stays
+                        <i class="fa-solid fa-arrow-right-long"></i>
+
+                    </button>
+                </div>
+            </div>
+
+
+            <!-- Foster -->
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition group border border-slate-100 flex flex-col">
+
+                <div class="relative h-56 overflow-hidden">
+
+                    <img src="https://res.akamaized.net/domain/image/upload/t_web/c_fill,w_1000,h_650/v1673999523/iStock-964867066_ds03zy.jpg"
+                         alt="Foster South Gippsland Victoria"
+                         class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                         onerror="this.src='https://placehold.co/600x400/0284c7/ffffff?text=Foster'">
+
+                    <span class="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full">
+                        Hub Town
+                    </span>
+                </div>
+
+                <div class="p-6 flex-1 flex flex-col justify-between">
+
+                    <div>
+
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">
+                            Foster
+                        </h3>
+
+                        <p class="text-slate-600 text-sm mb-4">
+                            The commercial hub offering boutique shopping, great dining,
+                            and sweeping views of Corner Inlet.
+                        </p>
+
+                    </div>
+
+                    <button onclick="filterByTown('Foster')"
+                            class="text-prom-600 font-semibold text-sm hover:text-prom-700 flex items-center gap-1 group-hover:translate-x-1 transition">
+
+                        View Guides & Stays
+                        <i class="fa-solid fa-arrow-right-long"></i>
+
+                    </button>
+                </div>
+            </div>
+
+
+            <!-- Yanakie -->
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition group border border-slate-100 flex flex-col">
+
+                <div class="relative h-56 overflow-hidden">
+
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=90"
+                         alt="Yanakie coastal landscape near Wilsons Promontory"
+                         class="w-full h-full object-cover group-hover:scale-105 transition duration-500"
+                         onerror="this.src='https://placehold.co/600x400/f59e0b/ffffff?text=Yanakie'">
+
+                    <span class="absolute top-4 left-4 bg-black/60 backdrop-blur-md text-white text-xs font-semibold px-3 py-1 rounded-full">
+                        Prom Gateway
+                    </span>
+                </div>
+
+                <div class="p-6 flex-1 flex flex-col justify-between">
+
+                    <div>
+
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">
+                            Yanakie
+                        </h3>
+
+                        <p class="text-slate-600 text-sm mb-4">
+                            Situated on the narrow isthmus leading to the Prom,
+                            boasting stunning water views on both sides.
+                        </p>
+
+                    </div>
+
+                    <button onclick="filterByTown('Yanakie')"
+                            class="text-prom-600 font-semibold text-sm hover:text-prom-700 flex items-center gap-1 group-hover:translate-x-1 transition">
+
+                        View Guides & Stays
+                        <i class="fa-solid fa-arrow-right-long"></i>
+
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ================= INTERACTIVE MAP ================= -->
+
+    <section id="map-section" class="py-16 bg-slate-100 border-y border-slate-200">
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+            <div class="text-center max-w-3xl mx-auto mb-12">
+
+                <span class="text-prom-600 font-bold uppercase tracking-wider text-sm">
+                    Interactive Explorer
+                </span>
+
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 mb-4">
+                    South Gippsland Explorer Map
+                </h2>
+
+                <p class="text-slate-600 text-lg">
+                    Click categories below to filter beaches, walks,
+                    accommodation, and dining across the Prom Coast.
+                </p>
+
+                <div class="flex flex-wrap justify-center gap-2 mt-6">
+
+                    <button onclick="filterMap('all')"
+                            class="map-filter-btn active-filter bg-prom-600 text-white px-4 py-2 rounded-full font-medium text-sm shadow transition">
+                        All Places
+                    </button>
+
+                    <button onclick="filterMap('accommodation')"
+                            class="map-filter-btn bg-white text-slate-700 hover:bg-slate-200 px-4 py-2 rounded-full font-medium text-sm shadow-sm transition">
+                        Stays & Hotels
+                    </button>
+
+                    <button onclick="filterMap('beach')"
+                            class="map-filter-btn bg-white text-slate-700 hover:bg-slate-200 px-4 py-2 rounded-full font-medium text-sm shadow-sm transition">
+                        Beaches
+                    </button>
+
+                    <button onclick="filterMap('walk')"
+                            class="map-filter-btn bg-white text-slate-700 hover:bg-slate-200 px-4 py-2 rounded-full font-medium text-sm shadow-sm transition">
+                        Walks & Nature
+                    </button>
+
+                    <button onclick="filterMap('dining')"
+                            class="map-filter-btn bg-white text-slate-700 hover:bg-slate-200 px-4 py-2 rounded-full font-medium text-sm shadow-sm transition">
+                        Dining & Cafes
+                    </button>
+
+                </div>
+            </div>
+
+
+            <div class="bg-white rounded-3xl shadow-xl overflow-hidden grid grid-cols-1 lg:grid-cols-3 border border-slate-200">
+
+                <!-- Map Visual Canvas -->
+
+                <div class="lg:col-span-2 relative bg-slate-900 h-[450px] sm:h-[550px] overflow-hidden flex items-center justify-center">
+
+                    <div class="absolute inset-0 opacity-45 bg-cover bg-center"
+                         style="background-image:url('https://trailnavigator.s3.ap-southeast-2.amazonaws.com/walks/123/630-l15.jpg')">
+                    </div>
+
+                    <div class="absolute inset-0 bg-gradient-to-t from-slate-950/80 via-transparent to-slate-950/30"></div>
+
+                    <div class="absolute top-4 left-4 bg-white/90 backdrop-blur-md px-4 py-2 rounded-xl shadow text-xs font-bold text-slate-800 flex items-center gap-2">
+
+                        <span class="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></span>
+                        South Gippsland Live Interactive View
+
+                    </div>
+
+
+                    <!-- Pins -->
+
+                    <div class="absolute inset-0 p-8 flex items-center justify-center">
+
+                        <!-- Squeaky Beach -->
+
+                        <div onclick="selectPoi('squeaky')"
+                             class="map-pin absolute cursor-pointer transform -translate-x-12 -translate-y-20 group">
+
+                            <div class="bg-blue-600 text-white p-3 rounded-full shadow-2xl flex items-center justify-center ring-4 ring-white/30">
+                                <i class="fa-solid fa-umbrella-beach text-lg"></i>
+                            </div>
+
+                            <span class="absolute top-full left-1/2 -translate-x-1/2 mt-1 bg-white text-slate-900 text-xs font-bold px-2 py-0.5 rounded shadow whitespace-nowrap">
+                                Squeaky Beach
+                            </span>
+                        </div>
+
+
+                        <!-- Prom Stay -->
+
+                        <div onclick="selectPoi('promstay')"
+                             class="map-pin absolute cursor-pointer transform translate-x-24 -translate-y-10 group">
+
+                            <div class="bg-emerald-600 text-white p-3 rounded-full shadow-2xl flex items-center justify-center ring-4 ring-white/30">
+                                <i class="fa-solid fa-bed text-lg"></i>
+                            </div>
+
+                            <span class="absolute top-full left-1/2 -translate-x-1/2 mt-1 bg-white text-slate-900 text-xs font-bold px-2 py-0.5 rounded shadow whitespace-nowrap">
+                                Prom Wilderness Retreat
+                            </span>
+                        </div>
+
+
+                        <!-- Mount Bishop -->
+
+                        <div onclick="selectPoi('bishop')"
+                             class="map-pin absolute cursor-pointer transform -translate-x-32 translate-y-16 group">
+
+                            <div class="bg-amber-600 text-white p-3 rounded-full shadow-2xl flex items-center justify-center ring-4 ring-white/30">
+                                <i class="fa-solid fa-person-hiking text-lg"></i>
+                            </div>
+
+                            <span class="absolute top-full left-1/2 -translate-x-1/2 mt-1 bg-white text-slate-900 text-xs font-bold px-2 py-0.5 rounded shadow whitespace-nowrap">
+                                Mount Bishop Summit
+                            </span>
+                        </div>
+
+
+                        <!-- Fish Creek -->
+
+                        <div onclick="selectPoi('fishcreek')"
+                             class="map-pin absolute cursor-pointer transform translate-x-28 translate-y-28 group">
+
+                            <div class="bg-purple-600 text-white p-3 rounded-full shadow-2xl flex items-center justify-center ring-4 ring-white/30">
+                                <i class="fa-solid fa-utensils text-lg"></i>
+                            </div>
+
+                            <span class="absolute top-full left-1/2 -translate-x-1/2 mt-1 bg-white text-slate-900 text-xs font-bold px-2 py-0.5 rounded shadow whitespace-nowrap">
+                                Fish Creek Hotel
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="absolute bottom-4 left-4 right-4 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-2.5 rounded-xl text-white text-xs flex justify-between items-center">
+
+                        <span>
+                            <i class="fa-solid fa-circle-info mr-1 text-amber-400"></i>
+                            Click any pin on the map to inspect details & book accommodation.
+                        </span>
+
+                        <span class="hidden sm:inline font-semibold">
+                            South Gippsland, VIC
+                        </span>
+
+                    </div>
+
+                </div>
+
+
+                <!-- POI Detail -->
+
+                <div class="p-6 lg:p-8 flex flex-col justify-between bg-white">
+
+                    <div id="poi-details">
+
+                        <div class="flex items-center justify-between mb-4">
+
+                            <span id="poi-badge"
+                                  class="bg-blue-100 text-blue-800 text-xs font-bold px-3 py-1 rounded-full uppercase">
+                                Beach & Coast
+                            </span>
+
+                            <span class="text-amber-500 font-bold text-sm">
+                                <i class="fa-solid fa-star"></i>
+                                4.9 (Prom Icon)
+                            </span>
+
+                        </div>
+
+                        <h3 id="poi-title"
+                            class="text-2xl font-extrabold text-slate-900 mb-2">
+                            Squeaky Beach
+                        </h3>
+
+                        <p id="poi-desc"
+                           class="text-slate-600 text-sm mb-6 leading-relaxed">
+
+                            Famous for its quartz sand that literally makes a squeaking sound
+                            when you walk upon it. Backed by huge granite boulders and turquoise waters.
+
+                        </p>
+
+                        <div class="space-y-3 border-t border-slate-100 pt-4 mb-6">
+
+                            <div class="flex items-center gap-3 text-sm text-slate-700">
+
+                                <i class="fa-solid fa-location-dot text-prom-600 w-5"></i>
+
+                                <span id="poi-location">
+                                    Wilsons Promontory National Park
+                                </span>
+
+                            </div>
+
+                            <div class="flex items-center gap-3 text-sm text-slate-700">
+
+                                <i class="fa-solid fa-car text-prom-600 w-5"></i>
+
+                                <span id="poi-access">
+                                    Accessible via Tidal River car park
+                                </span>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div>
+
+                        <button onclick="scrollToPlannerFromMap()"
+                                class="w-full bg-slate-900 hover:bg-prom-600 text-white font-bold py-3.5 px-4 rounded-xl shadow transition flex items-center justify-center gap-2">
+
+                            <i class="fa-solid fa-bed"></i>
+                            Find Nearby Accommodation
+
+                        </button>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ================= ATTRACTIONS ================= -->
+
+    <section id="attractions" class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-12">
+
+            <div>
+
+                <span class="text-prom-600 font-bold uppercase tracking-wider text-sm">
+                    Must-Do Experiences
+                </span>
+
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2">
+                    Highlights of the Prom Coast
+                </h2>
+
+            </div>
+
+            <p class="text-slate-600 max-w-md mt-4 md:mt-0">
+                Hand-picked adventures ranging from world-class coastal hikes
+                to family-friendly scenic lookouts.
+            </p>
+
+        </div>
+
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+
+
+            <!-- Mount Bishop -->
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition border border-slate-100 flex flex-col">
+
+                <div class="h-64 relative overflow-hidden">
+
+                    <img src="https://trailnavigator.s3.ap-southeast-2.amazonaws.com/walks/123/630-l15.jpg"
+                         alt="Mount Bishop Wilsons Promontory panoramic view"
+                         class="w-full h-full object-cover hover:scale-105 transition duration-500"
+                         onerror="this.src='https://placehold.co/600x400/0284c7/ffffff?text=Mount+Bishop'">
+
+                    <span class="absolute top-4 left-4 bg-amber-500 text-white text-xs font-bold px-3 py-1 rounded-full">
+                        Bushwalk
+                    </span>
+
+                </div>
+
+                <div class="p-6 flex-1 flex flex-col justify-between">
+
+                    <div>
+
+                        <div class="flex items-center gap-2 text-xs text-slate-500 mb-2 font-semibold">
+                            <span>
+                                <i class="fa-solid fa-clock"></i>
+                                2.5 Hours
+                            </span>
+                            •
+                            <span>
+                                <i class="fa-solid fa-signal"></i>
+                                Moderate
+                            </span>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">
+                            Mount Bishop Summit Walk
+                        </h3>
+
+                        <p class="text-slate-600 text-sm mb-4">
+                            Climb through open forest to massive granite boulders with
+                            panoramic views over Corner Inlet and Norman Bay.
+                        </p>
+
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+
+                        <span class="text-xs font-bold text-prom-700">
+                            Wilsons Prom
+                        </span>
+
+                        <button onclick="openAttractionModal(
+                            'Mount Bishop Summit',
+                            'Climb through open forest to massive granite boulders with panoramic views over Corner Inlet and Norman Bay.',
+                            '2.5 Hours • Moderate Hike'
+                        )"
+                        class="text-sm font-semibold text-prom-600 hover:text-prom-700">
+
+                            View Guide
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Norman Beach -->
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition border border-slate-100 flex flex-col">
+
+                <div class="h-64 relative overflow-hidden">
+
+                    <img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1000&q=90"
+                         alt="Norman Beach coastal landscape Wilsons Promontory"
+                         class="w-full h-full object-cover hover:scale-105 transition duration-500"
+                         onerror="this.src='https://placehold.co/600x400/16a34a/ffffff?text=Norman+Beach'">
+
+                    <span class="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                        Beach
+                    </span>
+
+                </div>
+
+                <div class="p-6 flex-1 flex flex-col justify-between">
+
+                    <div>
+
+                        <div class="flex items-center gap-2 text-xs text-slate-500 mb-2 font-semibold">
+
+                            <span>
+                                <i class="fa-solid fa-clock"></i>
+                                All Day
+                            </span>
+
+                            •
+
+                            <span>
+                                <i class="fa-solid fa-signal"></i>
+                                Easy Access
+                            </span>
+
+                        </div>
+
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">
+                            Norman Beach & Tidal River
+                        </h3>
+
+                        <p class="text-slate-600 text-sm mb-4">
+                            The vibrant heart of Wilsons Prom. Perfect for swimming,
+                            paddleboarding, and stunning golden sunsets.
+                        </p>
+
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+
+                        <span class="text-xs font-bold text-prom-700">
+                            Tidal River
+                        </span>
+
+                        <button onclick="openAttractionModal(
+                            'Norman Beach & Tidal River',
+                            'The vibrant heart of Wilsons Prom. Perfect for swimming, paddleboarding, and stunning golden sunsets over the water.',
+                            'All Day • Easy Access'
+                        )"
+                        class="text-sm font-semibold text-prom-600 hover:text-prom-700">
+
+                            View Guide
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- Lilly Pilly -->
+
+            <div class="bg-white rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition border border-slate-100 flex flex-col">
+
+                <div class="h-64 relative overflow-hidden">
+
+                    <img src="https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1000&q=90"
+                         alt="Lilly Pilly Gully rainforest walk Wilsons Promontory"
+                         class="w-full h-full object-cover hover:scale-105 transition duration-500"
+                         onerror="this.src='https://placehold.co/600x400/f59e0b/ffffff?text=Lilly+Pilly'">
+
+                    <span class="absolute top-4 left-4 bg-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                        Nature Walk
+                    </span>
+
+                </div>
+
+                <div class="p-6 flex-1 flex flex-col justify-between">
+
+                    <div>
+
+                        <div class="flex items-center gap-2 text-xs text-slate-500 mb-2 font-semibold">
+
+                            <span>
+                                <i class="fa-solid fa-clock"></i>
+                                1.5 Hours
+                            </span>
+
+                            •
+
+                            <span>
+                                <i class="fa-solid fa-signal"></i>
+                                Easy Circuit
+                            </span>
+
+                        </div>
+
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">
+                            Lilly Pilly Gully Nature Walk
+                        </h3>
+
+                        <p class="text-slate-600 text-sm mb-4">
+                            A mesmerizing walk through lush rainforest ferns,
+                            towering eucalypts, and tranquil stream crossings.
+                        </p>
+
+                    </div>
+
+                    <div class="pt-4 border-t border-slate-100 flex items-center justify-between">
+
+                        <span class="text-xs font-bold text-prom-700">
+                            Wilsons Prom
+                        </span>
+
+                        <button onclick="openAttractionModal(
+                            'Lilly Pilly Gully Nature Walk',
+                            'A mesmerizing walk through lush rainforest ferns, towering eucalypts, and tranquil stream crossings in sheltered valleys.',
+                            '1.5 Hours • Easy Circuit'
+                        )"
+                        class="text-sm font-semibold text-prom-600 hover:text-prom-700">
+
+                            View Guide
+                            <i class="fa-solid fa-arrow-right"></i>
+
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ================= ACCOMMODATION ================= -->
+
+    <section id="planner"
+             class="py-20 bg-gradient-to-b from-slate-900 to-prom-deep text-white relative">
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+            <div class="text-center max-w-3xl mx-auto mb-16">
+
+                <span class="bg-amber-400 text-slate-950 font-bold uppercase tracking-wider text-xs px-3 py-1 rounded-full">
+                    Personalized Booking System
+                </span>
+
+                <h2 class="text-3xl sm:text-5xl font-extrabold mt-4 mb-4">
+                    Find Your Perfect Prom Coast Stay
+                </h2>
+
+                <p class="text-slate-300 text-lg">
+                    Search top-rated accommodation in Wilsons Promontory,
+                    Foster, Fish Creek, and Yanakie with our curated booking assistant.
+                </p>
+
+            </div>
+
+
+            <div class="bg-white text-slate-800 rounded-3xl shadow-2xl p-6 sm:p-10 max-w-5xl mx-auto border border-white/20">
+
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+
+                    <div>
+
+                        <label class="block text-xs font-bold uppercase text-slate-500 mb-1">
+                            Location / Town
+                        </label>
+
+                        <select id="book-location"
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 font-semibold text-slate-800 focus:ring-2 focus:ring-prom-600 focus:outline-none">
+
+                            <option>Any Location (South Gippsland)</option>
+                            <option>Wilsons Promontory Gateway (Yanakie)</option>
+                            <option>Fish Creek</option>
+                            <option>Foster Hub</option>
+                            <option>Port Welshpool</option>
+
+                        </select>
+                    </div>
+
+
+                    <div>
+
+                        <label class="block text-xs font-bold uppercase text-slate-500 mb-1">
+                            Check-in / Check-out
+                        </label>
+
+                        <input type="text"
+                               id="book-dates"
+                               value="Next Weekend (2 Nights)"
+                               class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 font-semibold text-slate-800 focus:ring-2 focus:ring-prom-600 focus:outline-none">
+
+                    </div>
+
+
+                    <div>
+
+                        <label class="block text-xs font-bold uppercase text-slate-500 mb-1">
+                            Guests & Rooms
+                        </label>
+
+                        <select id="book-guests"
+                                class="w-full bg-slate-50 border border-slate-200 rounded-xl p-3 font-semibold text-slate-800 focus:ring-2 focus:ring-prom-600 focus:outline-none">
+
+                            <option>2 Adults, 1 Room</option>
+                            <option>Family (2 Adults, 2 Kids)</option>
+                            <option>Solo Traveler</option>
+                            <option>Group (4+ Adults)</option>
+
+                        </select>
+                    </div>
+
+
+                    <div class="flex items-end">
+
+                        <button onclick="runBookingSearch()"
+                                class="w-full bg-prom-600 hover:bg-prom-700 text-white font-bold p-3.5 rounded-xl shadow-lg transition flex items-center justify-center gap-2">
+
+                            <i class="fa-solid fa-magnifying-glass"></i>
+                            Check Rates
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="border-t border-slate-200 pt-8 mt-6">
+
+                    <div class="flex justify-between items-center mb-6">
+
+                        <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+
+                            <i class="fa-solid fa-award text-amber-500"></i>
+                            Curated Prom Coast Stays
+
+                        </h3>
+
+                        <span class="text-xs font-semibold text-slate-500">
+                            Instant Confirmation Available
+                        </span>
+
+                    </div>
+
+
+                    <div id="property-list"
+                         class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+
+                        <!-- Property 1 -->
+
+                        <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200 flex flex-col justify-between hover:shadow-md transition">
+
+                            <div>
+
+                                <img src="https://images.unsplash.com/photo-1564501049412-61c2a3083791?auto=format&fit=crop&w=1000&q=90"
+                                     alt="Prom Coast luxury accommodation"
+                                     class="w-full h-40 object-cover rounded-xl mb-4"
+                                     onerror="this.src='https://placehold.co/400x250/16a34a/ffffff?text=Prom+Stays'">
+
+                                <span class="text-[10px] font-extrabold uppercase bg-emerald-100 text-emerald-800 px-2 py-0.5 rounded">
+                                    Top Rated
+                                </span>
+
+                                <h4 class="font-bold text-slate-900 text-lg mt-2">
+                                    Prom Coast Wilderness Retreat
+                                </h4>
+
+                                <p class="text-slate-500 text-xs mb-3">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    Yanakie (Gateway to Prom)
+                                </p>
+
+                            </div>
+
+
+                            <div class="flex items-center justify-between pt-4 border-t border-slate-200">
+
+                                <div>
+
+                                    <span class="text-xs text-slate-400 block">
+                                        From / night
+                                    </span>
+
+                                    <span class="text-lg font-extrabold text-slate-900">
+                                        $220 AUD
+                                    </span>
+
+                                </div>
+
+                                <button onclick="openBookingRedirect(
+                                    'Prom Coast Wilderness Retreat',
+                                    'Yanakie'
+                                )"
+                                class="bg-prom-600 hover:bg-prom-700 text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow transition">
+
+                                    Book via Booking.com
+
+                                </button>
+
+                            </div>
+                        </div>
+
+
+                        <!-- Property 2 -->
+
+                        <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200 flex flex-col justify-between hover:shadow-md transition">
+
+                            <div>
+
+                                <img src="https://images.unsplash.com/photo-1601918774946-25832a4be0d6?auto=format&fit=crop&w=1000&q=90"
+                                     alt="Fish Creek cottage accommodation"
+                                     class="w-full h-40 object-cover rounded-xl mb-4"
+                                     onerror="this.src='https://placehold.co/400x250/0284c7/ffffff?text=Cottage'">
+
+                                <span class="text-[10px] font-extrabold uppercase bg-blue-100 text-blue-800 px-2 py-0.5 rounded">
+                                    Scenic Views
+                                </span>
+
+                                <h4 class="font-bold text-slate-900 text-lg mt-2">
+                                    Fish Creek Village Cottages
+                                </h4>
+
+                                <p class="text-slate-500 text-xs mb-3">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    Fish Creek Arts Village
+                                </p>
+
+                            </div>
+
+
+                            <div class="flex items-center justify-between pt-4 border-t border-slate-200">
+
+                                <div>
+
+                                    <span class="text-xs text-slate-400 block">
+                                        From / night
+                                    </span>
+
+                                    <span class="text-lg font-extrabold text-slate-900">
+                                        $185 AUD
+                                    </span>
+
+                                </div>
+
+                                <button onclick="openBookingRedirect(
+                                    'Fish Creek Village Cottages',
+                                    'Fish Creek'
+                                )"
+                                class="bg-prom-600 hover:bg-prom-700 text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow transition">
+
+                                    Book via Booking.com
+
+                                </button>
+
+                            </div>
+                        </div>
+
+
+                        <!-- Property 3 -->
+
+                        <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200 flex flex-col justify-between hover:shadow-md transition">
+
+                            <div>
+
+                                <img src="https://images.unsplash.com/photo-1584132967334-10e028bd69f7?auto=format&fit=crop&w=1000&q=90"
+                                     alt="Foster South Gippsland accommodation"
+                                     class="w-full h-40 object-cover rounded-xl mb-4"
+                                     onerror="this.src='https://placehold.co/400x250/f59e0b/ffffff?text=Foster+Stays'">
+
+                                <span class="text-[10px] font-extrabold uppercase bg-amber-100 text-amber-800 px-2 py-0.5 rounded">
+                                    Best Value
+                                </span>
+
+                                <h4 class="font-bold text-slate-900 text-lg mt-2">
+                                    Foster Inlet Motel & Suites
+                                </h4>
+
+                                <p class="text-slate-500 text-xs mb-3">
+                                    <i class="fa-solid fa-location-dot"></i>
+                                    Foster Commercial Hub
+                                </p>
+
+                            </div>
+
+
+                            <div class="flex items-center justify-between pt-4 border-t border-slate-200">
+
+                                <div>
+
+                                    <span class="text-xs text-slate-400 block">
+                                        From / night
+                                    </span>
+
+                                    <span class="text-lg font-extrabold text-slate-900">
+                                        $150 AUD
+                                    </span>
+
+                                </div>
+
+                                <button onclick="openBookingRedirect(
+                                    'Foster Inlet Motel & Suites',
+                                    'Foster'
+                                )"
+                                class="bg-prom-600 hover:bg-prom-700 text-white text-xs font-bold px-4 py-2.5 rounded-lg shadow transition">
+
+                                    Book via Booking.com
+
+                                </button>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- ================= ITINERARY ================= -->
+
+    <section id="itinerary"
+             class="py-20 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+
+        <div class="bg-prom-50 rounded-3xl p-8 sm:p-12 border border-prom-100 flex flex-col lg:flex-row items-center gap-12">
+
+            <div class="lg:w-1/2">
+
+                <span class="text-prom-600 font-bold uppercase tracking-wider text-sm">
+                    Personalized Prom Trip
+                </span>
+
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-900 mt-2 mb-4">
+                    Build Your South Gippsland Weekend Itinerary
+                </h2>
+
+                <p class="text-slate-600 mb-6 leading-relaxed">
+                    Not sure where to start?
+                    Let our smart trip builder craft a customized 2-day itinerary
+                    tailored to your travel style.
+                </p>
+
+
+                <div class="space-y-4 mb-8">
+
+                    <div class="flex items-start gap-3">
+
+                        <div class="bg-prom-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs mt-0.5">
+                            1
+                        </div>
+
+                        <div>
+
+                            <h4 class="font-bold text-slate-900">
+                                Select Travel Style
+                            </h4>
+
+                            <p class="text-sm text-slate-600">
+                                Choose between Nature & Hiking, Food & Arts,
+                                or Relaxed Coastal Getaway.
+                            </p>
+
+                        </div>
+                    </div>
+
+
+                    <div class="flex items-start gap-3">
+
+                        <div class="bg-prom-600 text-white w-6 h-6 rounded-full flex items-center justify-center font-bold text-xs mt-0.5">
+                            2
+                        </div>
+
+                        <div>
+
+                            <h4 class="font-bold text-slate-900">
+                                Instant Itinerary Generation
+                            </h4>
+
+                            <p class="text-sm text-slate-600">
+                                Get a day-by-day breakdown of walks, cafes,
+                                viewpoints, and best photo spots.
+                            </p>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="flex gap-4">
+
+                    <select id="travel-style"
+                            class="bg-white border border-slate-300 rounded-xl px-4 py-3 font-semibold text-slate-700 shadow-sm focus:outline-none">
+
+                        <option>Nature & Bushwalking</option>
+                        <option>Food, Wine & Arts</option>
+                        <option>Relaxed Coastal & Beaches</option>
+
+                    </select>
+
+                    <button onclick="generateItinerary()"
+                            class="bg-slate-900 hover:bg-prom-600 text-white font-bold px-6 py-3 rounded-xl shadow transition">
+
+                        Generate Itinerary
+
+                    </button>
+
+                </div>
+            </div>
+
+
+            <div class="lg:w-1/2 w-full bg-white p-6 sm:p-8 rounded-2xl shadow-xl border border-slate-200">
+
+                <div class="flex justify-between items-center mb-4 pb-4 border-b border-slate-100">
+
+                    <h3 id="itinerary-title"
+                        class="font-bold text-xl text-slate-900">
+
+                        Weekend Nature & Hiking Itinerary
+
+                    </h3>
+
+                    <span class="bg-emerald-100 text-emerald-800 text-xs font-bold px-2.5 py-1 rounded-full">
+                        Customized
+                    </span>
+
+                </div>
+
+
+                <div id="itinerary-content"
+                     class="space-y-4 text-sm text-slate-700">
+
+                    <div class="flex gap-4 items-start">
+
+                        <div class="font-bold text-prom-600 w-16 shrink-0">
+                            Day 1: AM
+                        </div>
+
+                        <div>
+
+                            <strong class="text-slate-900 block">
+                                Squeaky Beach Walk & Boulders
+                            </strong>
+
+                            Start your morning with a refreshing walk on Squeaky Beach
+                            and explore the granite monoliths.
+
+                        </div>
+                    </div>
+
+
+                    <div class="flex gap-4 items-start">
+
+                        <div class="font-bold text-prom-600 w-16 shrink-0">
+                            Day 1: PM
+                        </div>
+
+                        <div>
+
+                            <strong class="text-slate-900 block">
+                                Mount Bishop Hike
+                            </strong>
+
+                            Ascend through lush open forest for breathtaking panoramic
+                            views of Corner Inlet.
+
+                        </div>
+                    </div>
+
+
+                    <div class="flex gap-4 items-start">
+
+                        <div class="font-bold text-prom-600 w-16 shrink-0">
+                            Day 2: AM
+                        </div>
+
+                        <div>
+
+                            <strong class="text-slate-900 block">
+                                Fish Creek Arts & Brunch
+                            </strong>
+
+                            Enjoy artisan coffee and local bakery treats in
+                            Fish Creek's vibrant village hub.
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer class="bg-slate-950 text-white pt-16 pb-12 border-t border-slate-800">
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+
+            <div>
+
+                <div class="flex items-center gap-3 mb-4">
+
+                    <div class="w-10 h-10 rounded-xl bg-prom-600 flex items-center justify-center text-white">
+                        <i class="fa-solid fa-mountain-sun text-lg"></i>
+                    </div>
+
+                    <span class="text-2xl font-extrabold tracking-tight">
+                        PROM<span class="text-prom-600">COAST</span>
+                    </span>
+
+                </div>
+
+                <p class="text-slate-400 text-sm leading-relaxed mb-4">
+                    Your trusted independent travel & accommodation guide
+                    for South Gippsland and Wilsons Promontory, Victoria.
+                </p>
+
+                <div class="flex gap-3 text-slate-400">
+
+                    <a href="#"
+                       class="w-9 h-9 rounded-full bg-slate-900 hover:bg-prom-600 hover:text-white flex items-center justify-center transition">
+                        <i class="fa-brands fa-facebook-f"></i>
+                    </a>
+
+                    <a href="#"
+                       class="w-9 h-9 rounded-full bg-slate-900 hover:bg-prom-600 hover:text-white flex items-center justify-center transition">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+
+                    <a href="#"
+                       class="w-9 h-9 rounded-full bg-slate-900 hover:bg-prom-600 hover:text-white flex items-center justify-center transition">
+                        <i class="fa-brands fa-tripadvisor"></i>
+                    </a>
+
+                </div>
+            </div>
+
+
+            <div>
+
+                <h4 class="font-bold text-white mb-4">
+                    Explore Regions
+                </h4>
+
+                <ul class="space-y-2.5 text-sm text-slate-400">
+
+                    <li>
+                        <a href="#" class="hover:text-white transition">
+                            Wilsons Promontory
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="hover:text-white transition">
+                            Fish Creek & Foster
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="hover:text-white transition">
+                            Yanakie & Port Welshpool
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#" class="hover:text-white transition">
+                            Toora & Tarra Valley
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+
+            <div>
+
+                <h4 class="font-bold text-white mb-4">
+                    Quick Links
+                </h4>
+
+                <ul class="space-y-2.5 text-sm text-slate-400">
+
+                    <li>
+                        <a href="#map-section" class="hover:text-white transition">
+                            Interactive Map
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#planner" class="hover:text-white transition">
+                            Accommodation & Stays
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#attractions" class="hover:text-white transition">
+                            Top Walks & Beaches
+                        </a>
+                    </li>
+
+                    <li>
+                        <a href="#itinerary" class="hover:text-white transition">
+                            Trip Planner
+                        </a>
+                    </li>
+
+                </ul>
+            </div>
+
+
+            <div>
+
+                <h4 class="font-bold text-white mb-4">
+                    Prom Coast Newsletter
+                </h4>
+
+                <p class="text-slate-400 text-sm mb-4">
+                    Receive seasonal guides, local accommodation specials,
+                    and insider tips.
+                </p>
+
+                <form onsubmit="handleNewsletter(event)"
+                      class="flex flex-col gap-2">
+
+                    <input type="email"
+                           placeholder="Your email address"
+                           required
+                           class="bg-slate-900 border border-slate-800 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-prom-600">
+
+                    <button type="submit"
+                            class="bg-prom-600 hover:bg-prom-700 text-white text-sm font-bold py-3 rounded-xl transition shadow">
+
+                        Subscribe Free
+
+                    </button>
+
+                </form>
+            </div>
+
+        </div>
+
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 border-t border-slate-900 flex flex-col sm:flex-row justify-between items-center text-xs text-slate-500">
+
+            <p>
+                &copy; 2026 Prom Coast (promcoast.com.au).
+                All rights reserved. Built for South Gippsland Tourism.
+            </p>
+
+            <div class="flex gap-6 mt-4 sm:mt-0">
+
+                <a href="#" class="hover:text-slate-400 transition">
+                    Privacy Policy
+                </a>
+
+                <a href="#" class="hover:text-slate-400 transition">
+                    Terms of Use
+                </a>
+
+                <a href="#" class="hover:text-slate-400 transition">
+                    Affiliate Disclosure
+                </a>
+
+            </div>
+
+        </div>
+
+    </footer>
+
+
+    <!-- ================= MODAL ================= -->
+
+    <div id="app-modal"
+         class="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm hidden items-center justify-center p-4">
+
+        <div class="bg-white rounded-3xl max-w-lg w-full p-8 shadow-2xl relative animate-in fade-in zoom-in duration-200">
+
+            <button onclick="closeModal()"
+                    class="absolute top-4 right-4 text-slate-400 hover:text-slate-700 p-2">
+
+                <i class="fa-solid fa-xmark text-xl"></i>
+
+            </button>
+
+            <div id="modal-content"></div>
+
+        </div>
+    </div>
+
+
+    <!-- ================= JAVASCRIPT ================= -->
+
+    <script>
+
+        // Mobile Menu Toggle
+
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+
+        // Interactive Map POI Data
+
+        const poiData = {
+
+            'squeaky': {
+                title: 'Squeaky Beach',
+                badge: 'Beach & Coast',
+                rating: '4.9 (Prom Icon)',
+                desc: 'Famous for its quartz sand that literally makes a squeaking sound when you walk upon it. Backed by huge granite boulders and turquoise waters.',
+                location: 'Wilsons Promontory National Park',
+                access: 'Accessible via Tidal River car park'
+            },
+
+            'promstay': {
+                title: 'Prom Wilderness Retreat',
+                badge: 'Accommodation',
+                rating: '4.8 (Partner Stay)',
+                desc: 'Luxurious eco-villas nestled near the entrance to Wilsons Promontory. Features panoramic valley views and premium modern comforts.',
+                location: 'Yanakie (Prom Gateway)',
+                access: 'Free parking & Wi-Fi included'
+            },
+
+            'bishop': {
+                title: 'Mount Bishop Summit',
+                badge: 'Bushwalk & Nature',
+                rating: '4.7 (Top Hike)',
+                desc: 'Climb through open forest to massive granite boulders with panoramic views over Corner Inlet and Norman Bay.',
+                location: 'Wilsons Promontory',
+                access: 'Moderate 2.5 hour return track'
+            },
+
+            'fishcreek': {
+                title: 'Fish Creek Hotel',
+                badge: 'Dining & Pub',
+                rating: '4.6 (Local Favorite)',
+                desc: 'Historic art-themed country pub serving fresh South Gippsland produce, local craft beers, and warm hospitality.',
+                location: 'Fish Creek Village Hub',
+                access: 'Open daily for lunch & dinner'
+            }
+
+        };
+
+
+        function selectPoi(key) {
+
+            const data = poiData[key];
+
+            if (!data) return;
+
+            document.getElementById('poi-badge').innerText = data.badge;
+            document.getElementById('poi-title').innerText = data.title;
+            document.getElementById('poi-desc').innerText = data.desc;
+            document.getElementById('poi-location').innerText = data.location;
+            document.getElementById('poi-access').innerText = data.access;
+
+        }
+
+
+        function filterMap(category) {
+
+            document.querySelectorAll('.map-filter-btn').forEach(btn => {
+
+                btn.classList.remove(
+                    'bg-prom-600',
+                    'text-white'
+                );
+
+                btn.classList.add(
+                    'bg-white',
+                    'text-slate-700'
+                );
+
+            });
+
+            event.target.classList.remove(
+                'bg-white',
+                'text-slate-700'
+            );
+
+            event.target.classList.add(
+                'bg-prom-600',
+                'text-white'
+            );
+
+
+            if (category === 'accommodation') {
+
+                selectPoi('promstay');
+
+            } else if (category === 'beach') {
+
+                selectPoi('squeaky');
+
+            } else if (category === 'walk') {
+
+                selectPoi('bishop');
+
+            } else if (category === 'dining') {
+
+                selectPoi('fishcreek');
+
+            } else {
+
+                selectPoi('squeaky');
+
+            }
+
+        }
+
+
+        function filterByTown(townName) {
+
+            document.getElementById('planner')
+                .scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+            document.getElementById('book-location').value =
+                townName.includes('Wilsons')
+                    ? 'Wilsons Promontory Gateway (Yanakie)'
+                    : townName + ' Arts Village';
+
+        }
+
+
+        function scrollToPlanner() {
+
+            document.getElementById('planner')
+                .scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+        }
+
+
+        function scrollToPlannerFromMap() {
+
+            document.getElementById('planner')
+                .scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+        }
+
+
+        // Booking Modal
+
+        function openBookingRedirect(propertyName, town) {
+
+            const modal = document.getElementById('app-modal');
+            const content = document.getElementById('modal-content');
+
+            content.innerHTML = `
+
+                <div class="text-center">
+
+                    <div class="w-16 h-16 bg-prom-100 text-prom-600 rounded-full flex items-center justify-center mx-auto mb-4 text-2xl">
+
+                        <i class="fa-solid fa-suitcase-rolling"></i>
+
+                    </div>
+
+                    <span class="text-xs font-bold uppercase text-prom-600 tracking-wider">
+                        Prom Coast Booking Assistant
+                    </span>
+
+                    <h3 class="text-2xl font-extrabold text-slate-900 mt-1 mb-2">
+                        ${propertyName}
+                    </h3>
+
+                    <p class="text-slate-600 text-sm mb-6">
+
+                        You are securing your reservation in
+                        <strong>${town}, South Gippsland</strong>
+                        via our trusted booking partner Booking.com.
+
+                    </p>
+
+                    <div class="bg-slate-50 p-4 rounded-xl text-left text-xs space-y-2 mb-6 border border-slate-200">
+
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">Location:</span>
+                            <span class="font-semibold text-slate-800">
+                                ${town}, VIC
+                            </span>
+                        </div>
+
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">Cancellation:</span>
+                            <span class="font-semibold text-emerald-600">
+                                Free Cancellation Available
+                            </span>
+                        </div>
+
+                        <div class="flex justify-between">
+                            <span class="text-slate-500">Prom Coast Bonus:</span>
+                            <span class="font-semibold text-slate-800">
+                                Free Digital Hiking Guide Included
+                            </span>
+                        </div>
+
+                    </div>
+
+
+                    <div class="flex gap-3">
+
+                        <button onclick="closeModal()"
+                                class="flex-1 bg-slate-200 hover:bg-slate-300 text-slate-800 font-bold py-3 rounded-xl transition text-sm">
+
+                            Cancel
+
+                        </button>
+
+                        <button onclick="confirmBookingRedirect('${propertyName}')"
+                                class="flex-1 bg-prom-600 hover:bg-prom-700 text-white font-bold py-3 rounded-xl transition text-sm flex items-center justify-center gap-2">
+
+                            Proceed to Booking.com
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            `;
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+
+        }
+
+
+        function confirmBookingRedirect(prop) {
+
+            alert(
+                `Redirecting securely to Booking.com for reservation at ${prop}. Enjoy your stay in South Gippsland!`
+            );
+
+            closeModal();
+
+        }
+
+
+        // Attraction Modal
+
+        function openAttractionModal(title, desc, details) {
+
+            const modal = document.getElementById('app-modal');
+            const content = document.getElementById('modal-content');
+
+            content.innerHTML = `
+
+                <div>
+
+                    <span class="text-xs font-bold uppercase bg-prom-100 text-prom-800 px-3 py-1 rounded-full">
+                        Prom Coast Guide
+                    </span>
+
+                    <h3 class="text-2xl font-extrabold text-slate-900 mt-2 mb-2">
+                        ${title}
+                    </h3>
+
+                    <p class="text-slate-600 text-sm mb-6 leading-relaxed">
+                        ${desc}
+                    </p>
+
+                    <div class="bg-slate-50 p-4 rounded-xl text-xs space-y-2 mb-6 border border-slate-200">
+
+                        <div class="flex items-center gap-2 text-slate-700 font-semibold">
+
+                            <i class="fa-solid fa-circle-check text-prom-600"></i>
+
+                            ${details}
+
+                        </div>
+
+                        <div class="flex items-center gap-2 text-slate-700 font-semibold">
+
+                            <i class="fa-solid fa-circle-check text-prom-600"></i>
+
+                            Free Public Parking & Visitor Info
+
+                        </div>
+
+                    </div>
+
+
+                    <button onclick="closeModal()"
+                            class="w-full bg-slate-900 hover:bg-prom-600 text-white font-bold py-3 rounded-xl transition text-sm">
+
+                        Close Guide
+
+                    </button>
+
+                </div>
+
+            `;
+
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+
+        }
+
+
+        function closeModal() {
+
+            const modal = document.getElementById('app-modal');
+
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+
+        }
+
+
+        function runBookingSearch() {
+
+            const loc =
+                document.getElementById('book-location').value;
+
+            alert(
+                `Searching available properties in ${loc} for your dates with best rate guarantee...`
+            );
+
+            document.getElementById('property-list')
+                .scrollIntoView({
+                    behavior: 'smooth'
+                });
+
+        }
+
+
+        // Itinerary Generator
+
+        function generateItinerary() {
+
+            const style =
+                document.getElementById('travel-style').value;
+
+            const titleEl =
+                document.getElementById('itinerary-title');
+
+            const contentEl =
+                document.getElementById('itinerary-content');
+
+
+            if (style.includes('Food')) {
+
+                titleEl.innerText =
+                    'Food, Wine & Arts Itinerary';
+
+                contentEl.innerHTML = `
+
+                    <div class="flex gap-4 items-start">
+
+                        <div class="font-bold text-prom-600 w-16 shrink-0">
+                            Day 1
+                        </div>
+
+                        <div>
+
+                            <strong class="text-slate-900 block">
+                                Fish Creek Gallery & Pub Lunch
+                            </strong>
+
+                            Explore artisan galleries and enjoy local Gippsland
+                            produce at the historic Fish Creek Hotel.
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="flex gap-4 items-start">
+
+                        <div class="font-bold text-prom-600 w-16 shrink-0">
+                            Day 2
+                        </div>
+
+                        <div>
+
+                            <strong class="text-slate-900 block">
+                                Foster & Port Welshpool Jetty
+                            </strong>
+
+                            Discover boutique shops in Foster and stroll along
+                            the historic Long Jetty.
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            } else if (style.includes('Coastal')) {
+
+                titleEl.innerText =
+                    'Relaxed Coastal & Beaches Itinerary';
+
+                contentEl.innerHTML = `
+
+                    <div class="flex gap-4 items-start">
+
+                        <div class="font-bold text-prom-600 w-16 shrink-0">
+                            Day 1
+                        </div>
+
+                        <div>
+
+                            <strong class="text-slate-900 block">
+                                Norman Beach Sunset
+                            </strong>
+
+                            Relax on golden sands and enjoy the coastal scenery
+                            around Tidal River.
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="flex gap-4 items-start">
+
+                        <div class="font-bold text-prom-600 w-16 shrink-0">
+                            Day 2
+                        </div>
+
+                        <div>
+
+                            <strong class="text-slate-900 block">
+                                Yanakie Inlet Views
+                            </strong>
+
+                            Take in breathtaking panoramic views of Corner Inlet
+                            from Yanakie.
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            } else {
+
+                titleEl.innerText =
+                    'Weekend Nature & Hiking Itinerary';
+
+                contentEl.innerHTML = `
+
+                    <div class="flex gap-4 items-start">
+
+                        <div class="font-bold text-prom-600 w-16 shrink-0">
+                            Day 1: AM
+                        </div>
+
+                        <div>
+
+                            <strong class="text-slate-900 block">
+                                Squeaky Beach & Boulders
+                            </strong>
+
+                            Walk along the quartz sand and explore giant
+                            granite formations.
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="flex gap-4 items-start">
+
+                        <div class="font-bold text-prom-600 w-16 shrink-0">
+                            Day 1: PM
+                        </div>
+
+                        <div>
+
+                            <strong class="text-slate-900 block">
+                                Mount Bishop Hike
+                            </strong>
+
+                            Ascend through forest trails to panoramic
+                            summit views.
+
+                        </div>
+
+                    </div>
+
+                `;
+
+            }
+
+        }
+
+
+        // Newsletter
+
+        function handleNewsletter(e) {
+
+            e.preventDefault();
+
+            alert(
+                'Thank you for subscribing to Prom Coast updates! Check your inbox for your free South Gippsland travel guide.'
+            );
+
+            e.target.reset();
+
+        }
+
+    </script>
+
+</body>
+</html>
